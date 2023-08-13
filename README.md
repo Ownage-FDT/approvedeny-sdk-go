@@ -16,15 +16,15 @@ To use the SDK, you need to create an instance of the approve Client. You can do
 
 ```go
 import (
-    "log"
-    "github.com/Ownage-FDT/approvedeny-sdk-go"
+  "log"
+  "github.com/Ownage-FDT/approvedeny-sdk-go"
 )
 
- client, err := approvedeny.NewClient("your-api-key")
+client, err := approvedeny.NewClient("your-api-key")
 
-  if err != nil {
-      log.Println(err)
-  }
+if err != nil {
+  log.Println(err)
+}
 ```
 
 ### Creating a new check request
@@ -76,12 +76,11 @@ log.Println(checkRequestResponse)
 To verify webhook signatures, you need to call the `IsValidWebhookSignature` method on the client instance. This method returns a boolean value indicating whether the signature is valid or not.
 
 ```go
-
 webhookPayload = approvedeny.WebhookPayload{
-   	Event: "response.created",
-		Data: map[string]interface{}{
-			"foo": "bar",
-		},
+  Event: "response.created",
+  Data: map[string]interface{}{
+    "foo": "bar",
+  },
 }
 
 const isValidSignature = client.IsValidWebhookSignature("your-encryption-key", "signature", webhookPayload);
